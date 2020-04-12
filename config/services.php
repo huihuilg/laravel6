@@ -29,5 +29,14 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+//    'directmail' => [
+//        'app_key'    => env('DIRECT_MAIL_APP_KEY'),
+//        'app_secret' => env('DIRECT_MAIL_APP_SECRET'),
+//        'region'     => env('DIRECT_MAIL_REGION'),
+//        'account'    => [
+//            'alias' => env('DIRECT_MAIL_ACCOUNT_ALIAS'),
+//            'name' => env('DIRECT_MAIL_ACCOUNT_NAME'),
+//        ]
+//    ],
 
 ];

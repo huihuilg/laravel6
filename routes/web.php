@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('test.welcome');
 });
+
+Route::get('/test/store', 'TestController@store');
+Route::get('/test/dbTest', 'TestController@dbTest');
+Route::redirect('/here', '/test/dbTest');
+Route::post('/test/age', 'TestController@age');
+
+Route::apiResource('photos', 'PhotoController');
