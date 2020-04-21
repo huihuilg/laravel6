@@ -4,9 +4,8 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\Wzb;
-use App\User;
+use App\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Validator;
 
 class TestController extends Controller
@@ -49,8 +48,9 @@ class TestController extends Controller
      */
     public function dbTest(Request $request)
     {
-        $user = User::find(1);
-        dump($user);
+//        $user = User::find(1)->userRole;
+        $user = Role::find(1)->users;
+        return $user;
     }
 
 

@@ -1,7 +1,8 @@
 /public/hot
 /public/storage
 /storage/*.key
-.idea
+/vendor
+.idea/*
 Vagrantfile
 .env
 .env.backup
