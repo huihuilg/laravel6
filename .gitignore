@@ -1,7 +1,6 @@
 /public/hot
 /public/storage
 /storage/*.key
-/database
 /vendor
 .idea/*
 Vagrantfile
