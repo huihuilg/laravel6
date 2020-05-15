@@ -684,7 +684,7 @@ class TestResponse implements ArrayAccess
      */
     public function assertJsonCount(int $count, $key = null)
     {
-        if ($key) {
+        if (! is_null($key)) {
             PHPUnit::assertCount(
                 $count, data_get($this->json(), $key),
                 "Failed to assert that the response count matched the expected {$count}"
@@ -997,7 +997,7 @@ class TestResponse implements ArrayAccess
 
         if (is_null($value)) {
             PHPUnit::assertTrue(
-                $this->session()->getOldInput($key),
+                $this->session()->hasOldInput($key),
                 "Session is missing expected key [{$key}]."
             );
         } elseif ($value instanceof Closure) {
@@ -1029,7 +1029,7 @@ class TestResponse implements ArrayAccess
             if (is_int($key)) {
                 PHPUnit::assertTrue($errors->has($value), "Session missing error: $value");
             } else {
-                PHPUnit::assertContains($value, $errors->get($key, $format));
+                PHPUnit::assertContains(is_bool($value) ? (string) $value : $value, $errors->get($key, $format));
             }
         }
 
@@ -1169,6 +1169,25 @@ class TestResponse implements ArrayAccess
     }
 
     /**
+     * Dump the session from the response.
+     *
+     * @param  string|array  $keys
+     * @return $this
+     */
+    public function dumpSession($keys = [])
+    {
+        $keys = (array) $keys;
+
+        if (empty($keys)) {
+            dump($this->session()->all());
+        } else {
+            dump($this->session()->only($keys));
+        }
+
+        return $this;
+    }
+
+    /**
      * Get the streamed content from the response.
      *
      * @return string
@@ -1240,6 +1259,8 @@ class TestResponse implements ArrayAccess
      * @param  string  $offset
      * @param  mixed  $value
      * @return void
+     *
+     * @throws \LogicException
      */
     public function offsetSet($offset, $value)
     {
@@ -1251,6 +1272,8 @@ class TestResponse implements ArrayAccess
      *
      * @param  string  $offset
      * @return void
+     *
+     * @throws \LogicException
      */
     public function offsetUnset($offset)
     {

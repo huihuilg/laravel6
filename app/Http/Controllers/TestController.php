@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserLogin;
 use App\Jobs\Wzb;
 use App\Role;
 use Illuminate\Http\Request;
@@ -43,6 +44,12 @@ class TestController extends Controller
         dump($validator->messages());
     }
 
+    public function eventTest()
+    {
+        $a = 22222222;
+        event(new UserLogin($a));
+    }
+
     /**
      * 数据库操作
      */
@@ -53,5 +60,11 @@ class TestController extends Controller
         return $user;
     }
 
+
+    public function upload(Request $request)
+    {
+        $request->file('qa')->store('/images');
+        echo 1;
+    }
 
 }

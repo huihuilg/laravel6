@@ -14,14 +14,16 @@ class UserLogin
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+
+    public $a;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($a)
     {
-        //
+        $this->a = $a;
     }
 
     /**

@@ -19,5 +19,11 @@ Route::get('/test/store', 'TestController@store');
 Route::get('/test/dbTest', 'TestController@dbTest');
 Route::redirect('/here', '/test/dbTest');
 Route::post('/test/age', 'TestController@age');
+Route::post('/upload', 'TestController@upload');
+Route::group(['prefix' => 'event'], function () {
+    Route::any('/event', 'TestController@eventTest');
+    Route::any('/event/test','Test\EventController@event');
+});
+
 
 Route::apiResource('photos', 'PhotoController');

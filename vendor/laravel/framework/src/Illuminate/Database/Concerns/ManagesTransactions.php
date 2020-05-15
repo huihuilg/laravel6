@@ -154,7 +154,7 @@ trait ManagesTransactions
         if ($this->causedByLostConnection($e)) {
             $this->reconnect();
 
-            $this->pdo->beginTransaction();
+            $this->getPdo()->beginTransaction();
         } else {
             throw $e;
         }
@@ -171,9 +171,9 @@ trait ManagesTransactions
             $this->getPdo()->commit();
         }
 
-        $this->fireConnectionEvent('committed');
-
         $this->transactions = max(0, $this->transactions - 1);
+
+        $this->fireConnectionEvent('committed');
     }
 
     /**

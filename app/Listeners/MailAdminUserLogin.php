@@ -26,6 +26,7 @@ class MailAdminUserLogin
      */
     public function handle(UserLogin $event)
     {
-        //
+        echo base_path();
+        file_put_contents(base_path().'./public/1.txt',$event->a);
     }
 }
