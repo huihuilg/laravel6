@@ -4,7 +4,8 @@
 namespace App\Http\Controllers;
 
 use App\Events\UserLogin;
-use App\Jobs\Wzb;
+use App\Jobs\RebbitMq;
+use App\Jobs\testJob;
 use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -29,7 +30,8 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        Wzb::dispatch();
+//        $this->dispatch();
+        RebbitMq::dispatch();
     }
 
     /**
@@ -40,7 +42,6 @@ class TestController extends Controller
         $validator = Validator::make($request->input(), [
             'age' => 'required|max:255',
         ]);
-
         dump($validator->messages());
     }
 
@@ -55,7 +56,6 @@ class TestController extends Controller
      */
     public function dbTest(Request $request)
     {
-//        $user = User::find(1)->userRole;
         $user = Role::find(1)->users;
         return $user;
     }
