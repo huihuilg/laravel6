@@ -12,18 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('test.welcome');
+    echo 1;
 });
 
-Route::get('/test/store', 'TestController@store');
-Route::get('/test/dbTest', 'TestController@dbTest');
-Route::redirect('/here', '/test/dbTest');
-Route::post('/test/age', 'TestController@age');
-Route::post('/upload', 'TestController@upload');
-Route::group(['prefix' => 'event'], function () {
-    Route::any('/event', 'TestController@eventTest');
-    Route::any('/event/test','Test\EventController@event');
-});
+Route::get('/tt', 'TestController@test');
 
+//Route::get('/test/store', 'TestController@store');
+//Route::get('/test/db', 'TestController@dbTest');
 
-Route::apiResource('photos', 'PhotoController');
+//Route::redirect('/here', '/test/dbTest');
+//Route::post('/test/age', 'TestController@age');
+//Route::post('/upload', 'TestController@upload');
+//Route::group(['prefix' => 'event'], function () {
+//    Route::any('/event', 'TestController@eventTest');
+//    Route::any('/event/test','Test\EventController@event');
+//});
+//
+//
+//Route::apiResource('photos', 'PhotoController');
