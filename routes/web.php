@@ -11,21 +11,23 @@
 |s
 */
 
-Route::get('/', function () {
-    echo 1;
+
+Route::get('/', 'Test\TestController@test1');
+//用户
+Route::group(['prefix' => 'user', 'namespace' => 'User'], function() {
+    //获取用户
+    Route::get('/', 'UserController@test');
 });
 
-Route::get('/tt', 'TestController@test');
-
-//Route::get('/test/store', 'TestController@store');
-//Route::get('/test/db', 'TestController@dbTest');
+//Route::get('/test/store', 'UserController@store');
+//Route::get('/test/db', 'UserController@dbTest');
 
 //Route::redirect('/here', '/test/dbTest');
-//Route::post('/test/age', 'TestController@age');
-//Route::post('/upload', 'TestController@upload');
+//Route::post('/test/age', 'UserController@age');
+//Route::post('/upload', 'UserController@upload');
 //Route::group(['prefix' => 'event'], function () {
-//    Route::any('/event', 'TestController@eventTest');
-//    Route::any('/event/test','Test\EventController@event');
+//    Route::any('/event', 'UserController@eventTest');
+//    Route::any('/event/test','Test\UserController@event');
 //});
 //
 //

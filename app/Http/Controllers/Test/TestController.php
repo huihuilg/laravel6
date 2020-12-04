@@ -1,19 +1,20 @@
 <?php
 
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Test;
 
 use App\Events\UserLogin;
+use App\Http\Controllers\BaseController;
 use App\Jobs\RebbitMq;
 use App\Model\User\User;
 use Elasticsearch\ClientBuilder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class TestController extends Controller
+class TestController extends BaseController
 {
     /**
-     * TestController constructor.
+     * UserController constructor.
      */
     public function __construct()
     {
@@ -25,8 +26,14 @@ class TestController extends Controller
 
     }
 
+    public function test1(Request $request)
+    {
+        echo 1;
+    }
+
     public function test()
     {
+        echo 1;
         $client = ClientBuilder::create()->setHosts(['192.168.33.10'])->build();
 //        $param = [
 //            'index' => 'users',
@@ -237,7 +244,7 @@ class TestController extends Controller
      */
     public function dbTest(Request $request)
     {
-        $user = User::query()->searchable();;
+        $user = User::query()->get();;
         return $user;
     }
 
