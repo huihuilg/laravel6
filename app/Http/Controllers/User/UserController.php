@@ -5,7 +5,9 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\BaseController;
 use App\Model\User\User;
+use Illuminate\Support\Facades\Hash;
 use phpseclib\Crypt\Random;
+use function EasyDingTalk\str_random;
 
 class UserController extends BaseController
 {
@@ -17,8 +19,6 @@ class UserController extends BaseController
      */
     public function test()
     {
-        $salt = Random::string(6);
-        dd($salt);
-        return User::query()->create(['mobile' => '18500254733','email' => '18500254733@165.com', '']);
+
     }
 }

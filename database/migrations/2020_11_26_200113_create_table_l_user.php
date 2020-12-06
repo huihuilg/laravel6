@@ -19,7 +19,7 @@ class CreateTableLUser extends Migration
             $table->string('real_name', 32)->default('')->comment('真实姓名');
             $table->string('mobile', 32)->default('')->comment('手机号');
             $table->string('email', 64)->default('')->comment('邮箱');
-            $table->string('password', 32)->default('')->comment('密码');
+            $table->string('password', 64)->default('')->comment('密码');
             $table->string('id_card', 32)->default('')->comment('身份证号');
             $table->tinyInteger('gender')->default(3)->comment('性别  1:男 2:女 3:未知');
             $table->date('birthday')->nullable()->comment('生日');
